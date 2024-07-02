@@ -19,6 +19,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/pilihanpaket', function () {
+    return view('pilihanpaket');
+})->middleware(['auth', 'verified'])->name('pilihanpaket');
+
+Route::get('/updatepeserta', function () {
+    return view('updatepeserta');
+})->middleware(['auth', 'verified'])->name('updatepeserta');
+
 Route::get('/datapeserta', function () {
     return view('datapeserta');
 })->middleware(['auth', 'verified'])->name('datapeserta');

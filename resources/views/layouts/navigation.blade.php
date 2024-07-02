@@ -15,8 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('pilihanpaket')" :active="request()->routeIs('pilihanpaket')">
+                        {{ __('Pendaftaran Peserta Baru') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('datapeserta')" :active="request()->routeIs('datapeserta')">
-                        {{ __('Data Peserta') }}
+                        {{ __('Data Peserta lama') }}
                     </x-nav-link>
                     <x-nav-link :href="route('tagihan')" :active="request()->routeIs('tagihan')">
                         {{ __('Tagihan') }}
