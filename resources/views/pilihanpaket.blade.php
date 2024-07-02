@@ -15,6 +15,7 @@
                                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pendaftaran Polindo Internasional</h2>
                                 <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Pilih paket dan jurusan yang Anda inginkan.</p>
                             </div>
+                            <input type="hidden" id="user_id" value="{{ session('id') }}">
                             <div class="space-y-8 lg:grid lg:grid-cols-2 sm:gap-6 xl:gap-10 lg:space-y-0">
                                 <!-- Pricing Card -->
                                 <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
@@ -52,7 +53,7 @@
                                             <span>Free updates: <span class="font-semibold">6 months</span></span>
                                         </li>
                                     </ul>
-                                    <a href="#" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-blue-900">Get started</a>
+                                    <a href="#" class="daftar-freetest text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-blue-900">Get started</a>
                                 </div>
                                 <!-- Pricing Card -->
                                 <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
@@ -90,7 +91,7 @@
                                             <span>Free updates: <span class="font-semibold">24 months</span></span>
                                         </li>
                                     </ul>
-                                    <a href="{{ route('updatepeserta') }}" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-blue-900">Get started</a>
+                                    <button onclick="createFreetest()" class="daftar-berbayar text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:focus:ring-blue-900">Daftar</button>
                                 </div>
                             </div>
                         </div>
@@ -100,3 +101,4 @@
         </div>
     </div>
 </x-app-layout>
+@include('script')

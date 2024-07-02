@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PesertaAjaxController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -35,8 +36,8 @@ Route::get('/tagihan', function () {
     return view('tagihan');
 })->middleware(['auth', 'verified'])->name('tagihan');
 
-
-Route::get('/listinvoice', [InvoiceController::class, 'index'])->name('listinvoice')->middleware('role:admin');
+Route::resource('pesertaAjax', PesertaAjaxController::class);
+//Route::get('/listinvoice', [InvoiceController::class, 'index'])->name('listinvoice')->middleware('role:admin');
 
 
 Route::middleware('auth')->group(function () {
