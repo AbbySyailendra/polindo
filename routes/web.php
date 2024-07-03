@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesertaAjaxController;
+use App\Http\Controllers\MhsController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -27,6 +28,8 @@ Route::get('/pilihanpaket', function () {
 Route::get('/updatepeserta', function () {
     return view('updatepeserta');
 })->middleware(['auth', 'verified'])->name('updatepeserta');
+
+Route::post('/InsertControl', [MhsController::class, 'InsertFreeTest']);
 
 Route::get('/datapeserta', function () {
     return view('datapeserta');

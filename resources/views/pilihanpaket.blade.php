@@ -91,7 +91,7 @@
                                             <span>Free updates: <span class="font-semibold">24 months</span></span>
                                         </li>
                                     </ul>
-                                    <button onclick="createFreetest()" class="daftar-berbayar text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:focus:ring-blue-900">Daftar</button>
+                                    <button onclick="createFreeTest()" class="daftar-berbayar text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:focus:ring-blue-900">Daftar</button>
                                 </div>
                             </div>
                         </div>
@@ -101,4 +101,30 @@
         </div>
     </div>
 </x-app-layout>
-@include('script')
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+ <script>
+        function createFreeTest() {
+            var user_id = $('#user_id').val();
+
+            $.ajax({
+                url: '{{ url('/InsertControl')}}',
+                type: 'POST',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    user_id: user_id
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert(response.success);
+                        window.location.href = '/datapeserta'; // Redirect ke halaman lain
+                    } else {
+                        alert(response.error);
+                    }
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    </script>
