@@ -30,10 +30,11 @@ Route::get('/updatepeserta', function () {
 })->middleware(['auth', 'verified'])->name('updatepeserta');
 
 Route::post('/InsertControl', [MhsController::class, 'InsertFreeTest']);
+Route::post('/UpdatePesertaControl', [MhsController::class, 'UpdateDataMhs']);
 
-Route::get('/datapeserta', function () {
-    return view('datapeserta');
-})->middleware(['auth', 'verified'])->name('datapeserta');
+// Route::get('/datapeserta', function () {
+//     return view('datapeserta');
+// })->middleware(['auth', 'verified'])->name('datapeserta');
 
 Route::get('/tagihan', function () {
     return view('tagihan');

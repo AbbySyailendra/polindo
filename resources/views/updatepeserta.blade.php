@@ -175,7 +175,7 @@
                                         </div>
                                         <div class="w-full">
                                             <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jurusan Sekolah Asal</label>
-                                            <input type="text" name="brand" id="mhs_jurusan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                                            <input type="text" name="brand" id="mhs_jursekolah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                                         </div>
                                         <div class="w-full">
                                             <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Induk Siswa Sekolah Asal</label>
@@ -212,7 +212,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="1" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -227,7 +227,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center ">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="2" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -242,7 +242,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="3" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -257,7 +257,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center ">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="4" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -267,15 +267,12 @@
                                                                 Program 1 Tahun
                                                             </p>
                                                         </div>
-                                                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                        </div>
                                                     </div>
                                                 </li>
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="5" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -290,7 +287,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="6" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -305,7 +302,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="7" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -320,7 +317,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="8" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -335,7 +332,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="9" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -370,33 +367,97 @@
 <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
 <script>
  $(document).ready(function() {
+
+    function onCancel(){ $('#smartwizard').smartWizard("reset"); }
     $('#smartwizard').smartWizard({
         theme: 'arrows',
         transitionEffect: 'fade',
         toolbarSettings: {
             toolbarButtonPosition: 'end'
-        }
+        },
+        toolbar: {
+            showNextButton: true, // show/hide a Next button
+            showPreviousButton: true, // show/hide a Previous button
+            extraHtml: `<button class="btn sw-btn-end sw-btn">Simpan</button>`
+  }
     });
 
     // Event ketika langkah berubah
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
         // Jika langkah ke-4 (index mulai dari 0, jadi langkah 4 adalah stepNumber 3)
         if (stepNumber === 3) {
-            $('.sw-btn-next').text('Save');
+            //$('.sw-btn-next').text('Save');
+            $('.sw-btn-next').hide();
+            $('.sw-btn-end').show();
         } else {
             $('.sw-btn-next').text('Next');
+            $('.sw-btn-next').show();
+            $('.sw-btn-end').hide();
         }
     });
 
     // Event ketika tombol "Next" atau "Save" diklik
-    $(document).on('click', '.sw-btn-next', function() {
-        // Memastikan stepNumber adalah 3 (step ke-4) dan tombol adalah 'Save'
-        if ($('#smartwizard').smartWizard("getStepIndex") === 3 && $(this).text() === 'Save') {
-            // Tambahkan logika untuk menyimpan data di sini
-            alert('Data telah disimpan!');
-        }
+    $(document).on('click', '.sw-btn-end', function() {
+        // Tambahkan logika untuk menyimpan data di sini
+        //alert('Data telah disimpan!');
+        var user_id = $('#user_id').val();
+        var mhs_nama = $('#mhs_nama').val();
+        var mhs_tmptlahir = $('#mhs_tmptlahir').val();
+        var mhs_tgllahir = $('#mhs_tgllahir').val();
+        var mhs_gender = $('#mhs_gender').val();
+        var mhs_agama = $('#mhs_agama').val();
+        var mhs_alamat = $('#mhs_alamat').val();
+        var mhs_ayah = $('#mhs_ayah').val();
+        var mhs_ibu = $('#mhs_ibu').val();
+        var mhs_saudara1 = $('#saudara1').val();
+        var mhs_saudara2 = $('#saudara2').val();
+        var mhs_saudara3 = $('#saudara3').val();
+        var mhs_saudara4 = $('#saudara4').val();
+        var mhs_saudara5 = $('#saudara5').val();
+        var mhs_sekolah = $('#mhs_sekolah').val();
+        var mhs_addsekolah = $('#mhs_addsekolah').val();
+        var mhs_jursekolah = $('#mhs_jursekolah').val();
+        var mhs_nis = $('#mhs_nis').val();
+        var mhs_jurusan = $('#mhs_jurusan').val();
+        //alert('User ID: ' + mhs_tmptlahir);
+        $.ajax({
+                url: '{{ url('/UpdatePesertaControl')}}',
+                type: 'POST',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    user_id: user_id,
+                    mhs_nama: mhs_nama,
+                    mhs_tmptlahir: mhs_tmptlahir,
+                    mhs_tgllahir: mhs_tgllahir,
+                    mhs_gender: mhs_gender,
+                    mhs_agama: mhs_agama,
+                    mhs_alamat: mhs_alamat,
+                    mhs_ayah: mhs_ayah,
+                    mhs_ibu: mhs_ibu,
+                    mhs_saudara1: mhs_saudara1,
+                    mhs_saudara2: mhs_saudara2,
+                    mhs_saudara3: mhs_saudara3,
+                    mhs_saudara4: mhs_saudara4,
+                    mhs_saudara5: mhs_saudara5,
+                    mhs_sekolah: mhs_sekolah,
+                    mhs_addsekolah: mhs_addsekolah,
+                    mhs_jursekolah: mhs_jursekolah,
+                    mhs_nis: mhs_nis,
+                    mhs_jurusan: mhs_jurusan
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert(response.success);
+                        window.location.href = '{{ url('/dashboard')}}'; // Redirect ke halaman lain
+                    } else {
+                        alert(response.error);
+                    }
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
     });
 });
-
 
 </script>
