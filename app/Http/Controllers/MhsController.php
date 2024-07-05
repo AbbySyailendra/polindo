@@ -4,9 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Mahasiswa;
 
 class MhsController extends Controller
 {
+    public function showForm()
+    {
+        $userId = Auth::id();
+
+        // Cek apakah user_id ada di tabel mahasiswa
+        $mahasiswa = Mahasiswa::where('user_id', $userId)->first();
+
+        return view('mahasiswa.form', compact('mahasiswa'));
+    }
+
+    public function showDetail($id)
+    {
+        $query = Mahasiswa::where('mhs_userid', $id)->first();
+
+        return view('updatepeserta', compact('query'));
+    }
+
+
     public function InsertFreeTest(Request $request)
     {
         // Validasi input

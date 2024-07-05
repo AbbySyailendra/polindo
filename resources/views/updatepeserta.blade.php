@@ -37,7 +37,7 @@
                                 </a>
                                 </li>
                             </ul>
-                        
+
                             <div class="tab-content">
                                 <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
                                     <form action="#">
@@ -45,28 +45,53 @@
                                         <div class="sm:col-span-2">
                                             <input type="hidden" id="user_id" value="{{ session('id') }}">
                                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Lengkap</label>
-                                            <input type="text" name="name" id="mhs_nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Lengkap" required="">
+                                            <input type="text" name="name" id="mhs_nama" value="{{ $query->mhs_nama }}" @if ($query->mhs_nama)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Lengkap" required="">
                                         </div>
                                         <div class="w-full">
                                             <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
-                                            <input type="text" name="brand" id="mhs_tmptlahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Tempat Lahir" required="">
+                                            <input type="text" name="brand" id="mhs_tmptlahir" value="{{ $query->mhs_tmptlahir }}" @if ($query->mhs_tmptlahir)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Tempat Lahir" required="">
                                         </div>
                                         <div class="w-full">
                                             <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
-                                            <input type="date" name="price" id="mhs_tgllahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
+                                            <input type="date" name="price" id="mhs_tgllahir" value="{{ $query->mhs_tgllahir }}" @if ($query->mhs_tgllahir)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
                                         </div>
                                         <div>
                                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
-                                            <select id="mhs_gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                <option selected="">Silahkan dipilih</option>
+                                            <select id="mhs_gender" @if ($query->mhs_jeniskelamin)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                <option value="{{ $query->mhs_jeniskelamin }}" selected>
+                                                    @if ($query->mhs_jeniskelamin === 'L')
+                                                        Laki-laki
+                                                    @elseif ($query->mhs_jeniskelamin === 'P')
+                                                        Perempuan
+                                                    @else
+                                                        Silahkan dipilih
+                                                    @endif
+                                                </option>
                                                 <option value="L">Laki-laki</option>
                                                 <option value="P">Perempuan</option>
                                             </select>
                                         </div>
                                         <div>
                                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agama</label>
-                                            <select id="mhs_agama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                <option selected="">Silahkan dipilih</option>
+                                            <select id="mhs_agama" @if ($query->mhs_agama)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                <option value="{{ $query->mhs_agama }}" selected>
+                                                    @if ($query->mhs_agama <> '')
+                                                        {{ $query->mhs_agama }}
+                                                    @else
+                                                        Silahkan dipilih
+                                                    @endif
+                                                </option>
+
                                                 <option value="Islam">Islam</option>
                                                 <option value="Kristen Protestan">Kristen Protestan</option>
                                                 <option value="Kristen Katolik">Kristen Katolik</option>
@@ -77,7 +102,10 @@
                                         </div>
                                         <div class="sm:col-span-2">
                                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
-                                            <textarea id="mhs_alamat" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Alamat Lengkap"></textarea>
+                                            <textarea id="mhs_alamat" rows="8" @if ($query->mhs_alamat)
+                                                disabled
+                                            @endif class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="Alamat Lengkap">{{ $query->mhs_alamat }}</textarea>
                                         </div>
                                     </div>
                                         <!-- <div class="flex justify-end">
@@ -160,7 +188,7 @@
                                                     Next
                                                 </button>
                                             </div> -->
-                                    </form> 
+                                    </form>
                                 </div>
                                 <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
                                     <form action="#">
@@ -193,7 +221,7 @@
                                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Ijazah</label>
                                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
                                         </div>
-                                        
+
                                     </div>
                                         <!-- <div class="flex justify-end">
                                             <button type="button" class="mt-4 px-5 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
@@ -351,12 +379,12 @@
 
                                 </div>
                             </div>
-                        
+
                             <!-- Include optional progressbar HTML -->
                             <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                        </div>  
+                        </div>
                 </div>
             </div>
         </div>
