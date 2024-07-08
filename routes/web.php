@@ -34,6 +34,10 @@ Route::get('/fasilitas', function () {
     return view('fasilitas');
 });
 
+Route::get('/sukses', function () {
+    return view('sukses');
+});
+
 Route::get('/updatedatamahasiswa', function () {
     // Konten halaman update data mahasiswa
 })->middleware(CheckMahasiswa::class)->name('updatedatamahasiswa');
