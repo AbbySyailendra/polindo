@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mahasiswa;
+use App\Models\Mahasiswa_keluarga;
+use App\Models\Mahasiswa_sekolah;
+use App\Models\MahasiswaTagihan;
+use App\Models\generateInvoiceNumber;
 
 class MhsController extends Controller
 {
@@ -21,8 +25,15 @@ class MhsController extends Controller
     public function showDetail($id)
     {
         $query = Mahasiswa::where('mhs_userid', $id)->first();
+        $query2 = Mahasiswa_keluarga::where('mhs_userid', $id)->first();
+        $query3 = Mahasiswa_sekolah::where('mhs_userid', $id)->first();
+        return view('updatepeserta', compact('query', 'query2', 'query3'));
+    }
 
-        return view('updatepeserta', compact('query'));
+    public function showDetailPembayaran($id)
+    {
+        $data = MahasiswaTagihan::where('mhs_userid', 1)->first();
+        return view('pembayaran', compact('data'));
     }
 
 
@@ -50,16 +61,43 @@ class MhsController extends Controller
         }
     }
 
+    public function InsertPremTest(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'user_id' => 'required|integer',
+        ]);
+
+        try {
+            // Ambil user_id dengan status 'terbuka' dari database
+            $userId = $request->input('user_id');
+
+            // Menyimpan user_id ke dalam tabel tujuan
+            DB::table('mahasiswa')->insert([
+                'mhs_userid' => $userId,
+                'mhs_paket' => 'P',
+                'mhs_datecreate' => now(),
+            ]);
+
+            return response()->json(['success' => 'User berhasil disimpan']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Gagal menyimpan data: ' . $e->getMessage()], 500);
+        }
+    }
+
     public function UpdateDataMhs(Request $request)
             {
                 // Validasi input
                 $request->validate([
                     'user_id' => 'required|integer',
                     'mhs_nama' => 'required|string',
+                    'mhs_email' => 'required|string',
                     'mhs_tmptlahir' => 'required|string',
                     'mhs_tgllahir' => 'required|date',
                     'mhs_gender' => 'required|string',
                     'mhs_agama' => 'required|string',
+                    'mhs_notelp' => 'required|string',
+                    'mhs_marriage' => 'required|string',
                     'mhs_alamat' => 'required|string',
                     'mhs_ayah' => 'nullable|string',
                     'mhs_ibu' => 'nullable|string',
@@ -81,10 +119,13 @@ class MhsController extends Controller
                     $data = $request->only([
                         'user_id',
                         'mhs_nama',
+                        'mhs_email',
                         'mhs_tmptlahir',
                         'mhs_tgllahir',
                         'mhs_gender',
                         'mhs_agama',
+                        'mhs_notelp',
+                        'mhs_marriage',
                         'mhs_alamat',
                         'mhs_ayah',
                         'mhs_ibu',
@@ -105,10 +146,13 @@ class MhsController extends Controller
                         ->where('mhs_userid', $data['user_id'])
                         ->update([
                             'mhs_nama' => $data['mhs_nama'],
+                            'mhs_email' => $data['mhs_email'],
                             'mhs_tmptlahir' => $data['mhs_tmptlahir'],
                             'mhs_tgllahir' => $data['mhs_tgllahir'],
                             'mhs_jeniskelamin' => $data['mhs_gender'],
                             'mhs_agama' => $data['mhs_agama'],
+                            'mhs_notelp' => $data['mhs_notelp'],
+                            'mhs_marriage' => $data['mhs_marriage'],
                             'mhs_alamat' => $data['mhs_alamat'],
                             'mhs_jurusan' => $data['mhs_jurusan'],
                         ]);
@@ -138,6 +182,17 @@ class MhsController extends Controller
                         ]
                     );
 
+                    $invoiceNumber = generateInvoiceNumber::generateInvoiceNumber();
+                    echo $invoiceNumber;
+                    DB::table('mahasiswa_tagihan')->updateOrInsert(
+                        ['mhs_userid' => $data['user_id']],
+                        [
+                        'mhs_invno' => $invoiceNumber,
+                        'mhs_invjml' => 300000,
+                        'mhs_invcreated' => now(),
+                        'mhs_invstatus' => 'Menunggu Pembayaran',
+                        ]
+                    );
                     DB::commit();
 
                     return response()->json(['success' => 'Data mahasiswa berhasil diperbarui']);

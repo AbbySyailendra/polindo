@@ -13,7 +13,7 @@
                         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
                             <div class="mx-auto max-w-5xl">
                             <div class="gap-4 sm:flex sm:items-center sm:justify-between">
-                                <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Histori Pembayaran</h2>
+                                <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Pembayaran</h2>
                             </div>
 
                             <div class="mt-6 flow-root sm:mt-8">
@@ -22,18 +22,21 @@
                                     <dl class="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
                                     <dt class="text-base font-medium text-gray-500 dark:text-gray-400">No Tagihan:</dt>
                                     <dd class="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">
-                                        <a href="#" class="hover:underline">#FWB127364372</a>
+                                        <input type="hidden" id="userid" value="{{ session('id') }}">
+                                        <input type="hidden" id="invoice_no" value="{{ $data->mhs_invno }}">
+                                        {{ $data->mhs_invno }}
                                     </dd>
                                     </dl>
 
                                     <dl class="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
                                     <dt class="text-base font-medium text-gray-500 dark:text-gray-400">Tanggal:</dt>
-                                    <dd class="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">20.06.2024</dd>
+                                    <dd class="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">{{ $data->mhs_invcreated }}</dd>
                                     </dl>
 
                                     <dl class="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
                                     <dt class="text-base font-medium text-gray-500 dark:text-gray-400">Jumlah Pembayaran:</dt>
-                                    <dd class="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">IDR 300.000</dd>
+                                    <dd class="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">IDR {{ number_format($data->mhs_invjml, 2, ',', '.') }}
+</dd>
                                     </dl>
 
                                     <dl class="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
@@ -42,12 +45,12 @@
                                         <svg class="me-1 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 4h-13m13 16h-13M8 20v-3.333a2 2 0 0 1 .4-1.2L10 12.6a1 1 0 0 0 0-1.2L8.4 8.533a2 2 0 0 1-.4-1.2V4h8v3.333a2 2 0 0 1-.4 1.2L13.957 11.4a1 1 0 0 0 0 1.2l1.643 2.867a2 2 0 0 1 .4 1.2V20H8Z" />
                                         </svg>
-                                        Proses Validasi
+                                        {{ $data->mhs_invstatus }}
                                     </dd>
                                     </dl>
 
                                     <div class="w-full grid sm:grid-cols-2 lg:flex lg:w-64 lg:items-center lg:justify-end gap-4">
-                                    <button id="pay-button" class="w-full rounded-lg border border-blue-700 px-3 py-2 text-center text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-600 dark:hover:text-white dark:focus:ring-blue-900 lg:w-auto">Pembayaran</button>
+                                    <button type="button" onclick="paybutton()" id="paybutton" class="w-full rounded-lg border border-blue-700 px-3 py-2 text-center text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-600 dark:hover:text-white dark:focus:ring-blue-900 lg:w-auto">Pembayaran</button>
                                     <!-- <button type="button" id="KonfirmasiModalButton" data-modal-target="KonfirmasiProductModal" data-modal-toggle="KonfirmasiProductModal" class="w-full rounded-lg border border-blue-700 px-3 py-2 text-center text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-600 dark:hover:text-white dark:focus:ring-blue-900 lg:w-auto">Konfirmasi Pembayaran</button> -->
                                     <a href="#" class="w-full inline-flex justify-center rounded-lg  border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 lg:w-auto">Detail</a>
                                     </div>
@@ -108,6 +111,33 @@
 </x-app-layout>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script>
+    function paybutton() {
+        var invoice_no = document.getElementById('invoice_no').value;
+        var userid = document.getElementById('userid').value;
+        var formData = new FormData();
+        formData.append('invoice_no', invoice_no);
+        formData.append('userid', userid);
+
+        fetch("{{ url('/PembayaranMidtrans') }}", {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.snap_token) {
+                // Handle Snap token, e.g., show payment popup
+                snap.pay(data.snap_token);
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
 <script type="text/javascript"
         src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="{{ config('services.midtrans.client_key') }}"></script>

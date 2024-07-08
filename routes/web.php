@@ -51,16 +51,12 @@ Route::get('/updatedatamahasiswa', [MhsController::class, 'showForm'])
     ->name('updatedatamahasiswa');
 
 Route::get('/updatepeserta/{id}', [MhsController::class, 'showDetail'])->middleware(['auth', 'verified'])->name('updatepeserta');
-// Route::get('/updatepeserta/{id}', function () {
-//     return view('updatepeserta');
-// })->middleware(['auth', 'verified'])->name('updatepeserta');
+Route::get('/pembayaran/{id}', [MhsController::class, 'showDetailPembayaran'])->middleware(['auth', 'verified'])->name('pembayaran');
 
-Route::post('/InsertControl', [MhsController::class, 'InsertFreeTest']);
+Route::post('/InsertFreeTest', [MhsController::class, 'InsertFreeTest']);
+Route::post('/InsertPrem', [MhsController::class, 'InsertPremTest']);
 Route::post('/UpdatePesertaControl', [MhsController::class, 'UpdateDataMhs']);
-
-// Route::get('/datapeserta', function () {
-//     return view('datapeserta');
-// })->middleware(['auth', 'verified'])->name('datapeserta');
+Route::post('/PembayaranMidtrans', [MidtransController::class, 'createTransaction']);
 
 Route::get('/pembayaran', function () {
     return view('pembayaran');

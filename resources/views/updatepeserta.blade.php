@@ -44,6 +44,7 @@
                                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                         <div class="sm:col-span-2">
                                             <input type="hidden" id="user_id" value="{{ session('id') }}">
+                                            <input type="hidden" id="mhs_email" value="{{ session('email') }}">
                                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Lengkap</label>
                                             <input type="text" name="name" id="mhs_nama" value="{{ $query->mhs_nama }}" @if ($query->mhs_nama)
                                                 disabled
@@ -100,6 +101,29 @@
                                                 <option value="Konghucu">Konghucu</option>
                                             </select>
                                         </div>
+                                        <div class="w-full">
+                                            <label for="telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomer Telp / Whatsapp</label>
+                                            <input type="tel" name="mhs_notelp" id="mhs_notelp" value="{{ $query->mhs_notelp }}" @if ($query->mhs_notelp)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
+                                        </div>
+                                        <div>
+                                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                            <select id="mhs_marriage" @if ($query->mhs_marriage)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                <option value="{{ $query->mhs_marriage }}" selected>
+                                                    @if ($query->mhs_marriage <> '')
+                                                        {{ $query->mhs_marriage }}
+                                                    @else
+                                                        Silahkan dipilih
+                                                    @endif
+                                                </option>
+
+                                                <option value="Belum Menikah">Belum Menikah</option>
+                                                <option value="Menikah">Menikah</option>
+                                            </select>
+                                        </div>
                                         <div class="sm:col-span-2">
                                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
                                             <textarea id="mhs_alamat" rows="8" @if ($query->mhs_alamat)
@@ -120,11 +144,15 @@
                                         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                             <div class="sm:col-span-2">
                                                 <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Ayah Kandung</label>
-                                                <input type="text" name="namaayah" id="mhs_ayah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" >
+                                                <input type="text" name="namaayah" id="mhs_ayah" value="{{ $query2->mhs_ayah }}" @if ($query2->mhs_ayah)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" >
                                             </div>
                                             <div class="sm:col-span-2">
                                                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Ibu Kandung</label>
-                                                <input type="text" name="namaibu" id="mhs_ibu" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" >
+                                                <input type="text" name="namaibu" id="mhs_ibu" value="{{ $query2->mhs_ibu }}" @if ($query2->mhs_ibu)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" >
                                             </div>
                                             <div class="sm:col-span-2">
                                                 <label for="category" class="block text-sm font-medium text-gray-900 dark:text-white">Hubungan</label>
@@ -134,7 +162,9 @@
                                                         <option value="L">Kakak</option>
                                                         <option value="P">Adik</option>
                                                     </select>
-                                                    <input type="text" name="saudara1" id="saudara1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
+                                                    <input type="text" name="saudara1" id="saudara1" value="{{ $query2->mhs_saudara1 }}" @if ($query2->mhs_saudara1)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
                                                 </div>
                                             </div>
                                             <div class="sm:col-span-2">
@@ -145,7 +175,9 @@
                                                         <option value="L">Kakak</option>
                                                         <option value="P">Adik</option>
                                                     </select>
-                                                    <input type="text" name="saudara2" id="saudara2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
+                                                    <input type="text" name="saudara2" id="saudara2" value="{{ $query2->mhs_saudara2 }}" @if ($query2->mhs_saudara2)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
                                                 </div>
                                             </div>
                                             <div class="sm:col-span-2">
@@ -156,7 +188,9 @@
                                                         <option value="L">Kakak</option>
                                                         <option value="P">Adik</option>
                                                     </select>
-                                                    <input type="text" name="saudara3" id="saudara3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
+                                                    <input type="text" name="saudara3" id="saudara3" value="{{ $query2->mhs_saudara3 }}" @if ($query2->mhs_saudara3)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
                                                 </div>
                                             </div>
                                             <div class="sm:col-span-2">
@@ -167,7 +201,9 @@
                                                         <option value="L">Kakak</option>
                                                         <option value="P">Adik</option>
                                                     </select>
-                                                    <input type="text" name="saudara4" id="saudara4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
+                                                    <input type="text" name="saudara4" id="saudara4" value="{{ $query2->mhs_saudara4 }}" @if ($query2->mhs_saudara4)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
                                                 </div>
                                             </div>
                                             <div class="sm:col-span-2">
@@ -178,7 +214,9 @@
                                                         <option value="L">Kakak</option>
                                                         <option value="P">Adik</option>
                                                     </select>
-                                                    <input type="text" name="saudara5" id="saudara5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
+                                                    <input type="text" name="saudara5" id="saudara5" value="{{ $query2->mhs_saudara5 }}" @if ($query2->mhs_saudara5)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-3/4 ml-2" placeholder="Nama Saudara/i">
                                                 </div>
                                             </div>
 
@@ -195,19 +233,25 @@
                                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                         <div class="sm:col-span-2">
                                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Sekolah Asal</label>
-                                            <input type="text" name="name" id="mhs_sekolah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Sekolah Asal" required="">
+                                            <input type="text" name="name" id="mhs_sekolah" value="{{ $query3->mhs_namasekolah }}" @if ($query3->mhs_namasekolah)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Sekolah Asal" required="">
                                         </div>
                                         <div class="sm:col-span-2">
                                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat Sekolah Asal</label>
-                                            <textarea id="mhs_addsekolah" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Alamat Sekolah Asal"></textarea>
+                                            <textarea id="mhs_addsekolah" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Alamat Sekolah Asal">{{ $query3->mhs_alamatsekolah }}</textarea>
                                         </div>
                                         <div class="w-full">
                                             <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jurusan Sekolah Asal</label>
-                                            <input type="text" name="brand" id="mhs_jursekolah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                                            <input type="text" name="brand" id="mhs_jursekolah" value="{{ $query3->mhs_jurusansekolah }}" @if ($query3->mhs_jurusansekolah)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                                         </div>
                                         <div class="w-full">
                                             <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Induk Siswa Sekolah Asal</label>
-                                            <input type="text" name="price" id="mhs_nis" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                                            <input type="text" name="price" id="mhs_nis" value="{{ $query3->mhs_nis }}" @if ($query3->mhs_nis)
+                                                disabled
+                                            @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                                         </div>
                                         <div class="w-full">
                                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Foto</label>
@@ -240,7 +284,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="1" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="1" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '1') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -255,7 +299,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center ">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="2" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="2" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '2') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -270,7 +314,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="3" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="3" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '3') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -285,7 +329,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center ">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="4" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="4" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '4') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -300,7 +344,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="5" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="5" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '5') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -315,7 +359,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="6" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="6" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '6') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -330,7 +374,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="7" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="7" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '7') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -345,7 +389,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="8" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="8" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '8') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -360,7 +404,7 @@
                                                 <li class="py-3 sm:py-4">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0">
-                                                            <input id="mhs_jurusan" type="radio" value="9" name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                            <input id="mhs_jurusan" type="radio" value="9" {{ (isset($query->mhs_jurusan) && $query->mhs_jurusan == '9') ? 'checked' : '' }} {{ isset($query->mhs_jurusan) ? 'disabled' : '' }} name="mhs_jurusan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                                         </div>
                                                         <div class="flex-1 min-w-0 ms-4">
                                                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -430,10 +474,13 @@
         //alert('Data telah disimpan!');
         var user_id = $('#user_id').val();
         var mhs_nama = $('#mhs_nama').val();
+        var mhs_email = $('#mhs_email').val();
         var mhs_tmptlahir = $('#mhs_tmptlahir').val();
         var mhs_tgllahir = $('#mhs_tgllahir').val();
         var mhs_gender = $('#mhs_gender').val();
         var mhs_agama = $('#mhs_agama').val();
+        var mhs_notelp = $('#mhs_notelp').val();
+        var mhs_marriage = $('#mhs_marriage').val();
         var mhs_alamat = $('#mhs_alamat').val();
         var mhs_ayah = $('#mhs_ayah').val();
         var mhs_ibu = $('#mhs_ibu').val();
@@ -455,10 +502,13 @@
                     _token: $('meta[name="csrf-token"]').attr('content'),
                     user_id: user_id,
                     mhs_nama: mhs_nama,
+                    mhs_email: mhs_email,
                     mhs_tmptlahir: mhs_tmptlahir,
                     mhs_tgllahir: mhs_tgllahir,
                     mhs_gender: mhs_gender,
                     mhs_agama: mhs_agama,
+                    mhs_notelp: mhs_notelp,
+                    mhs_marriage: mhs_marriage,
                     mhs_alamat: mhs_alamat,
                     mhs_ayah: mhs_ayah,
                     mhs_ibu: mhs_ibu,
@@ -476,7 +526,7 @@
                 success: function(response) {
                     if (response.success) {
                         alert(response.success);
-                        window.location.href = '{{ url('/dashboard')}}'; // Redirect ke halaman lain
+                        //window.location.href = '{{ url('/pembayaran')}}'; // Redirect ke halaman lain
                     } else {
                         alert(response.error);
                     }

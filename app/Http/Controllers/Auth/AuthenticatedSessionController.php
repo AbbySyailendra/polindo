@@ -28,11 +28,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-         // Tambahkan user ID ke sesi
+        // Tambahkan user ID ke sesi
         $request->session()->put('id', Auth::user()->id);
+
+        // Tambahkan email ke sesi
+        $request->session()->put('email', Auth::user()->email);
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
+
 
     /**
      * Destroy an authenticated session.
