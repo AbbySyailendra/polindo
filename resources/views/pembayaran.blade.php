@@ -22,7 +22,7 @@
                                     <dl class="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
                                     <dt class="text-base font-medium text-gray-500 dark:text-gray-400">No Tagihan:</dt>
                                     <dd class="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">
-                                        <input type="hidden" id="invoice_no" value="{{ session('id') }}">
+                                        <input type="hidden" id="userid" value="{{ session('id') }}">
                                         <input type="hidden" id="invoice_no" value="{{ $data->mhs_invno }}">
                                         {{ $data->mhs_invno }}
                                     </dd>
@@ -141,7 +141,7 @@
 <script type="text/javascript"
         src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="{{ config('services.midtrans.client_key') }}"></script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
         var payButton = document.getElementById('pay-button');
         payButton.addEventListener('click', function () {
             // Ambil CSRF token dari meta tag
@@ -180,4 +180,4 @@
                 }
             });
         });
-    </script>
+    </script> --}}

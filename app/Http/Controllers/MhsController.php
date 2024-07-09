@@ -30,9 +30,21 @@ class MhsController extends Controller
         return view('updatepeserta', compact('query', 'query2', 'query3'));
     }
 
-    public function showDetailPembayaran($id)
+    public function showDetailPembayaran(Request $request)
     {
-        $data = MahasiswaTagihan::where('mhs_userid', 1)->first();
+        // Ambil user_id dari session
+        $userId = session('id');
+        echo $userId;
+        if (!$userId) {
+            return redirect()->route('login')->with('error', 'User ID tidak ditemukan dalam session.');
+        }
+
+        $data = DB::table('mahasiswa_tagihan')->where('mhs_userid', $userId)->first();
+
+        if (!$data) {
+            return redirect()->back()->with('error', 'Tagihan tidak ditemukan.');
+        }
+
         return view('pembayaran', compact('data'));
     }
 

@@ -59,4 +59,27 @@ class MidtransController extends Controller
         return response()->json(['error' => $e->getMessage()], 500);
     }
     }
+
+    //Pembayaran Sukses
+    public function paymentSuccess(Request $request)
+        {
+            $paymentData = $request->all();
+
+            try {
+                // Ambil user_id dari data pembayaran
+                $order_id = $paymentData['order_id']; // Pastikan ini sesuai dengan order_id yang Anda kirimkan
+
+                // Update status pembayaran di tabel mahasiswa_tagihan
+                DB::table('mahasiswa_tagihan')
+                    ->where('mhs_invno', $order_id)
+                    ->update([
+                        'mhs_invstatus' => 'Sudah Dibayar',
+                        'mhs_invpay' => now(),
+                    ]);
+
+                return response()->json(['success' => 'Payment status updated']);
+            } catch (\Exception $e) {
+                return response()->json(['error' => 'Failed to update payment status: ' . $e->getMessage()], 500);
+            }
+        }
 }

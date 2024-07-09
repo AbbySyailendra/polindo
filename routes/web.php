@@ -7,8 +7,13 @@ use App\Http\Controllers\MhsController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Middleware\CheckMahasiswa;
 
+///Route Midtrans
 Route::get('/midtrans', [MidtransController::class, 'index']);
 Route::post('/midtrans/transaction', [MidtransController::class, 'createTransaction']);
+Route::post('/midtrans/payment-success', [MidtransController::class, 'paymentSuccess']);
+Route::get('/payment-success', function() {
+    return view('sukses');
+});
 
 // Route::get('/', function () {
 //     return view('welcome');
