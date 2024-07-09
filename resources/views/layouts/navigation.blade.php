@@ -12,6 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    @if(auth()->check() && auth()->user()->id <> 1)
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -21,6 +22,18 @@
                     <x-nav-link :href="route('pembayaran')" :active="request()->routeIs('pembayaran')">
                         {{ __('Tagihan') }}
                     </x-nav-link>
+                    @endif
+                    @if(auth()->check() && auth()->user()->id == 1)
+                    <x-nav-link :href="route('adminhome')" :active="request()->routeIs('adminhome')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('adminmahasiswa')" :active="request()->routeIs('adminmahasiswa')">
+                        {{ __('List Mahasiswa') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('adminsetting')" :active="request()->routeIs('adminsetting')">
+                        {{ __('Admin Setting') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

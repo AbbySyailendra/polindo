@@ -6,6 +6,7 @@ use App\Http\Controllers\PesertaAjaxController;
 use App\Http\Controllers\MhsController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Middleware\CheckMahasiswa;
+use App\Http\Controllers\AdminController;
 
 ///Route Midtrans
 Route::get('/midtrans', [MidtransController::class, 'index']);
@@ -59,6 +60,7 @@ Route::get('/updatedatamahasiswa', [MhsController::class, 'showForm'])
     ->middleware(CheckMahasiswa::class)
     ->name('updatedatamahasiswa');
 
+
 Route::get('/updatepeserta/{id}', [MhsController::class, 'showDetail'])->middleware(['auth', 'verified'])->name('updatepeserta');
 Route::get('/pembayaran/{id}', [MhsController::class, 'showDetailPembayaran'])->middleware(['auth', 'verified'])->name('pembayaran');
 
@@ -67,12 +69,11 @@ Route::post('/InsertPrem', [MhsController::class, 'InsertPremTest']);
 Route::post('/UpdatePesertaControl', [MhsController::class, 'UpdateDataMhs']);
 Route::post('/PembayaranMidtrans', [MidtransController::class, 'createTransaction']);
 
-Route::get('/pembayaran', function () {
-    return view('pembayaran');
-})->middleware(['auth', 'verified'])->name('pembayaran');
+// Route::get('/pembayaran', function () {
+//     return view('pembayaran');
+// })->middleware(['auth', 'verified'])->name('pembayaran');
 
-Route::resource('pesertaAjax', PesertaAjaxController::class);
-//Route::get('/listinvoice', [InvoiceController::class, 'index'])->name('listinvoice')->middleware('role:admin');
+
 
 
 Route::middleware('auth')->group(function () {
@@ -80,5 +81,19 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+//Ini Route Admin
+Route::get('/adminhome', function () {
+    return view('admin');
+})->middleware(['auth', 'verified'])->name('adminhome');
+
+Route::get('/adminmahasiswa', function () {
+    return view('listmahasiswa');
+})->middleware(['auth', 'verified'])->name('adminmahasiswa');
+
+Route::get('/adminsetting', function () {
+    return view('setting');
+})->middleware(['auth', 'verified'])->name('adminsetting');
 
 require __DIR__.'/auth.php';

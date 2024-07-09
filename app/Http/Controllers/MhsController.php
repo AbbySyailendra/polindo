@@ -34,17 +34,19 @@ class MhsController extends Controller
     {
         // Ambil user_id dari session
         $userId = session('id');
-        echo $userId;
+
         if (!$userId) {
             return redirect()->route('login')->with('error', 'User ID tidak ditemukan dalam session.');
         }
 
+        // Ambil data dari database
         $data = DB::table('mahasiswa_tagihan')->where('mhs_userid', $userId)->first();
 
         if (!$data) {
             return redirect()->back()->with('error', 'Tagihan tidak ditemukan.');
         }
 
+        // Return view dengan data
         return view('pembayaran', compact('data'));
     }
 
