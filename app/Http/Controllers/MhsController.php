@@ -99,6 +99,17 @@ class MhsController extends Controller
         }
     }
 
+    public function indexMahasiswa()
+    {
+        $mahasiswas = DB::table('mahasiswa')
+            ->join('jurusan', 'mahasiswa.mhs_jurusan', '=', 'jurusan_id')
+            ->leftJoin('mahasiswa_tagihan', 'mahasiswa.mhs_userid', '=', 'mahasiswa_tagihan.mhs_userid')
+            ->select('mahasiswa.*', 'jurusan.jurusan_nama', 'mahasiswa_tagihan.*')
+            ->get();
+
+        return view('listmahasiswa', compact('mahasiswas')); // Mengirim data ke view
+    }
+
     public function UpdateDataMhs(Request $request)
             {
                 // Validasi input

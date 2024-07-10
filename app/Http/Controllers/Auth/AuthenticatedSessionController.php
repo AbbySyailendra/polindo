@@ -27,12 +27,17 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        $userId = Auth::user()->id;
         // Tambahkan user ID ke sesi
         $request->session()->put('id', Auth::user()->id);
 
         // Tambahkan email ke sesi
         $request->session()->put('email', Auth::user()->email);
+
+        // Periksa apakah user ID adalah 1
+        if ($userId == 1) {
+            return redirect()->route('adminhome');
+        }
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

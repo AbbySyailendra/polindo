@@ -88,9 +88,11 @@ Route::get('/adminhome', function () {
     return view('admin');
 })->middleware(['auth', 'verified'])->name('adminhome');
 
-Route::get('/adminmahasiswa', function () {
-    return view('listmahasiswa');
-})->middleware(['auth', 'verified'])->name('adminmahasiswa');
+// Route::get('/adminmahasiswa', function () {
+//     return view('listmahasiswa');
+// })->middleware(['auth', 'verified'])->name('adminmahasiswa');
+
+Route::get('/adminmahasiswa', [MhsController::class, 'indexMahasiswa'])->name('adminmahasiswa');
 
 Route::get('/adminsetting', function () {
     return view('setting');
